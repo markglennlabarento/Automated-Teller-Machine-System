@@ -3,5 +3,5 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="Automated Teller Machine System/Automated Teller Machine System.vcxproj" />
+  <Project Path="Automated Teller Machine System/Automated Teller Machine System.vcxproj" Id="6a1dfdbb-f605-4842-a26e-464489d06a75" />
 </Solution>

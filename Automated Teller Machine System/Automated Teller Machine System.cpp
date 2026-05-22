@@ -33,11 +33,15 @@ public:
 
     void create() {
         cout << "Welcome to HEM Bank ATM System!\n";
+
+        cout << "Insert your card to begin registration.\n";
+        cout << "Press Enter to continue...";
+        cin.get();
+
         cout << "Let's start by creating your account.\n";
 
         cout << "Enter your name: ";
-        cin.ignore();           // flush leftover newline before getline
-        getline(cin, name);
+        getline(cin, name);  // no extra ignore needed here now
 
         do {
             cout << "Enter your account number: ";

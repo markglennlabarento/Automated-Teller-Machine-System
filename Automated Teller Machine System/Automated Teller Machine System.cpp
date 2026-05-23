@@ -13,11 +13,10 @@ void printBanner() {
     cout << "\n";
     cout << "  (==========================================)\n";
     cout << "  (                                          )\n";
-    cout << "  (   #  #  ####  #   #                      )\n";
-    cout << "  (   #  #  #     ## ##                      )\n";
-    cout << "  (   ####  ###   # # #                      )\n";
-    cout << "  (   #  #  #     #   #                      )\n";
-    cout << "  (   #  #  ####  #   #                      )\n";
+    cout << "  (    ___  ____  ____                       )\n";
+    cout << "  (   / _ )/ __ \\/ __ \\                      )\n";
+    cout << "  (  / _  / /_/ / /_/ /                      )\n";
+    cout << "  ( /____/\\____/\\____/                       )\n";
     cout << "  (                                          )\n";
     cout << "  (      AUTOMATED TELLER MACHINE            )\n";
     cout << "  (        Secure * Reliable * Fast          )\n";
@@ -32,7 +31,7 @@ public:
     int registerPin;
 
     void create() {
-        cout << "Welcome to HEM Bank ATM System!\n";
+        cout << "Welcome to BDO Bank ATM System!\n";
 
         cout << "Insert your card to begin registration.\n";
         cout << "Press Enter to continue...";
@@ -98,7 +97,7 @@ public:
 class ATMFunctions {
 public:
     CreateAccount& account;
-    double balance = 0;
+    long balance = 0;
 
     ATMFunctions(CreateAccount& acc) : account(acc) {}
 
@@ -108,11 +107,11 @@ public:
         do {
             cout << "\n";
             cout << "  (==========================================)\n";
-            cout << "  (            HEM Bank ATM Menu            )\n";
+            cout << "  (            BDO Bank ATM Menu             )\n";
             cout << "  (==========================================)\n";
-            cout << "  (   [1] Deposit      [2] Withdraw        )\n";
-            cout << "  (   [3] Balance      [4] Transfer        )\n";
-            cout << "  (   [5] Change PIN   [0] Exit            )\n";
+            cout << "  (   [1] Deposit      [2] Withdraw          )\n";
+            cout << "  (   [3] Balance      [4] Transfer          )\n";
+            cout << "  (   [5] Change PIN   [0] Exit              )\n";
             cout << "  (==========================================)\n";
             cout << "  Enter your choice: ";
             cin >> choice;
@@ -140,7 +139,7 @@ public:
                 ChangePin();
                 break;
             case 0:
-                cout << "Exiting. Thank you for using HEM Bank ATM!\n";
+                cout << "Exiting. Thank you for using BDO Bank ATM!\n";
                 break;
             default:
                 cout << "Invalid choice. Please try again.\n";
@@ -150,7 +149,7 @@ public:
     }
 
     void Deposit() {
-        double amount;
+        long amount;
         cout << "Enter amount to deposit: ";
         cin >> amount;
         if (amount <= 0) {
@@ -164,12 +163,22 @@ public:
 
     void Withdraw() {
         double amount;
+		double dailyLimit = 50000; // Example daily limit
+		double atmCashLimit = 1000000; // Example ATM cash limit
         cout << "Enter amount to withdraw: ";
         cin >> amount;
         if (amount <= 0) {
             cout << "Invalid amount.\n";
             return;
         }
+		if (amount > dailyLimit) {
+			cout << "Amount exceeds daily withdrawal limit of " << dailyLimit << ".\n";
+			return;
+		}
+		if (amount > atmCashLimit) {
+			cout << "Amount exceeds ATM cash limit of " << atmCashLimit << ".\n";
+			return;
+		}
         if (amount > balance) {
             cout << "Insufficient funds.\n";
         }

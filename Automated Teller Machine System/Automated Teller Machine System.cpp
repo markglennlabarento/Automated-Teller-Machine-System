@@ -163,22 +163,23 @@ public:
 
     void Withdraw() {
         double amount;
-		double dailyLimit = 50000; // Example daily limit
-		double atmCashLimit = 1000000; // Example ATM cash limit
+        int dailyWithdrawn = 0;
+        const int dailyLimit = 50000;
+        const int atmCashLimit = 1000000;
         cout << "Enter amount to withdraw: ";
         cin >> amount;
         if (amount <= 0) {
             cout << "Invalid amount.\n";
             return;
         }
-		if (amount > dailyLimit) {
-			cout << "Amount exceeds daily withdrawal limit of " << dailyLimit << ".\n";
-			return;
-		}
-		if (amount > atmCashLimit) {
-			cout << "Amount exceeds ATM cash limit of " << atmCashLimit << ".\n";
-			return;
-		}
+        if (amount > atmCashLimit) {
+            cout << "Amount exceeds ATM cash limit of " << atmCashLimit << ".\n";
+            return;
+        }
+        if (dailyWithdrawn + amount > dailyLimit) {
+            cout << "Amount exceeds daily withdrawal limit of " << dailyLimit << ".\n";
+            return;
+        }
         if (amount > balance) {
             cout << "Insufficient funds.\n";
         }
